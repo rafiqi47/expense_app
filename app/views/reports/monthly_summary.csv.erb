@@ -1,0 +1,8 @@
+<%# app/views/reports/monthly_summary.csv.erb %>
+<%= CSV.generate do |csv| %>
+  csv << ["Category", "Total Spending"] # Header row
+  <% @summary.each do |category, total| %>
+    csv << [category, total]
+  <% end %>
+    csv << ["Total", @summary.values.sum] # Footer row with total
+<% end %>

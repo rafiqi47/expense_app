@@ -1,0 +1,35 @@
+<h1>Monthly Expense Summary - <%= @month.strftime('%B %Y') %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Total Spending</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @summary.each do |category, total| %>
+      <tr>
+        <td><%= category %></td>
+        <td><%= total %></td>
+      </tr>
+    <% end %>
+    <% if @summary.empty? %>
+      <tr>
+        <td colspan="2">No expenses recorded for this month.</td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td><strong>Total</strong></td>
+      <td><%= @summary.values.sum %></td>
+    </tr>
+  </tfoot>
+</table>
+
+<br>
+
+
+<%= link_to "Download CSV", report_monthly_summary_path(month: @month.strftime('%Y-%m'), format: :csv) %>
+<%= link_to "Download PDF", report_monthly_summary_path(month: @month.strftime('%Y-%m'), format: :pdf) %>
