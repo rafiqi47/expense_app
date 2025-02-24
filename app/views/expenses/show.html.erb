@@ -1,17 +1,49 @@
-<p>
-  <strong>Amount:</strong>
-  <%= @expense.amount %>
-</p>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-header bg-info text-white">
+          <h1 class="h3 mb-0">Expense Details</h1>
+        </div>
 
-<p>
-  <strong>Category:</strong>
-  <%= @expense.category %>
-</p>
+        <div class="card-body">
+          <div class="row mb-3">
+            <div class="col-sm-3">
+              <strong>Amount:</strong>
+            </div>
+            <div class="col-sm-9">
+              <%= number_to_currency(@expense.amount) %>
+            </div>
+          </div>
 
-<p>
-  <strong>Date:</strong>
-  <%= @expense.date %>
-</p>
+          <div class="row mb-3">
+            <div class="col-sm-3">
+              <strong>Category:</strong>
+            </div>
+            <div class="col-sm-9">
+              <%= @expense.category %>
+            </div>
+          </div>
 
-<%= link_to 'Edit', edit_expense_path(@expense) %> |
-<%= link_to 'Back', expenses_path %>
+          <div class="row mb-3">
+            <div class="col-sm-3">
+              <strong>Date:</strong>
+            </div>
+            <div class="col-sm-9">
+              <%= @expense.date.strftime("%B %d, %Y") %>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <%= link_to edit_expense_path(@expense), class: 'btn btn-warning me-2' do %>
+            <i class="bi bi-pencil"></i> Edit
+          <% end %>
+          <%= link_to expenses_path, class: 'btn btn-secondary' do %>
+            <i class="bi bi-arrow-left"></i> Back
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
