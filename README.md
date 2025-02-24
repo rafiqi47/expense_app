@@ -19,7 +19,7 @@ A Ruby on Rails application for tracking personal or business expenses.
 
 1. Clone the repository
 ```bash
-git clone <repository-url>
+git clone git@github.com:rafiqi47/expense_app.git
 cd expense_app
 ```
 
